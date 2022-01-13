@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:global {
+    html, body, #app {
+        height: 100%;
+    }
+
+    #app > .ant-layout {
+        height: 100%;
+
+        & > .ant-layout-content {
+            overflow-y: auto;
+        }
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2020",
+        "jsx": "preserve",
+        "strictFunctionTypes": true,
+        "baseUrl": "./",
+        "paths": {
+            "@hooks/*": ["src/hooks/*"],
+            "@components/*": ["src/components/*"],
+            "@contexts/*": ["src/contexts/*"],
+            "@assets/*": ["src/assets/*"],
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
+    ]
+}

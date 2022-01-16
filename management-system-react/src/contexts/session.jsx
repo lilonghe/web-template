@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 
 const initialState = {
     user: undefined,
+    permissions: [],
 };
 
 const sessionContext = React.createContext();
@@ -12,7 +13,12 @@ function reducer(state, action) {
             return {
                 ...state,
                 user: action.payload,
-            }
+            };
+        case 'SAVE_PERMISSIONS':
+            return {
+                ...state,
+                permissions: action.payload,
+            };
         default:
             return state;
     }

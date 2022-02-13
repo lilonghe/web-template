@@ -5,12 +5,11 @@ import { useState } from 'react';
 
 import IconFold from '@assets/fold.svg';
 import IconUnfold from '@assets/unfold.svg';
-import IconMenuView from '@assets/menu-view.svg';
-import IconMenuFile from '@assets/menu-file.svg';
+import { Link, useLocation } from "react-router-dom";
 
 export default function BasicLayout({ children }) {
-
     const [collapsed, setCollapsed] = useState(false);
+    const location = useLocation();
 
     const toggleCollapsed = () => {
         setCollapsed(!collapsed);
@@ -24,26 +23,19 @@ export default function BasicLayout({ children }) {
                 theme="light" 
                 className={styles.sider}>
                 <div className={styles.logo}>
-                    <Avatar>Logo</Avatar>
+                    后台管理模板
                 </div>
                 <Menu
                     mode="inline"
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
+                    defaultSelectedKeys={[location.pathname.split('/')[1] || 'home']}
                     className={styles.menu}
                 >
-                    <Menu.SubMenu key="sub1" title="subnav 1" icon={<img src={IconMenuView} className={"icon"} />}>
-                        <Menu.Item key="1">option1</Menu.Item>
-                        <Menu.Item key="2">option2</Menu.Item>
-                        <Menu.Item key="3">option3</Menu.Item>
-                        <Menu.Item key="4">option4</Menu.Item>
-                    </Menu.SubMenu>
-                    <Menu.SubMenu key="sub2" title="subnav 2" icon={<img src={IconMenuFile} className={"icon"} />}>
-                        <Menu.Item key="5">option5</Menu.Item>
-                        <Menu.Item key="6">option6</Menu.Item>
-                        <Menu.Item key="7">option7</Menu.Item>
-                        <Menu.Item key="8">option8</Menu.Item>
-                    </Menu.SubMenu>
+                    <Menu.Item key="home" icon={<img src={IconFold} className="icon" />}>
+                        <Link to='/'>Home</Link>  
+                    </Menu.Item>
+                    <Menu.Item key="about" icon={<img src={IconUnfold} className="icon" />}>
+                        <Link to='/about'>About</Link>  
+                    </Menu.Item>
                 </Menu>
             </Layout.Sider>
             <Layout>
@@ -58,9 +50,11 @@ export default function BasicLayout({ children }) {
                         <Avatar />
                     </Dropdown>
                 </Layout.Header>
-                <Layout.Content className={styles.mainContent}>
-                    {children}
-                </Layout.Content>
+                <div className={styles.contentWrapper}>
+                    <Layout.Content className={styles.mainContent}>
+                        {children}
+                    </Layout.Content>
+                </div>
             </Layout>
             
         </Layout>

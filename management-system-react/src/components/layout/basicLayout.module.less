@@ -4,16 +4,20 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;
+    height: var(--layout-header-height);
 }
 
 .mainContent {
-    margin: 16px;
+    margin: 0 var(--layout-gap);
     background-color: var(--color-layout-bg);
+    min-height: calc(100% - var(--layout-gap));
+    margin-bottom: var(--layout-gap);
 }
 
 .contentWrapper {
     flex: 1;
-    display: flex;
+    overflow: auto;
+    padding-top: 16px;
 }
 
 .logo {

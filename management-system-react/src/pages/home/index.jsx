@@ -1,28 +1,24 @@
 import { Button, Card } from "antd";
-import { sessionContext } from "@contexts/session";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import useAuth from "@hooks/useAuth";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import AuthWrapper from '@components/auth/AuthWrapper';
 
 export default function Home() {
-    const {session, dispatch} = useContext(sessionContext);
+    const dispatch = useDispatch();
+    const { user } = useSelector(state=>state.session)
     const {AuthWrapper} = useAuth();
 
     useEffect(() => {
-        dispatch({
-            type: 'SAVE_USER',
-            payload: {
-                name: 'John Doe',
-            }
-        });
-        dispatch({
-            type: 'SAVE_PERMISSIONS',
-            payload: ['user-confirm'],
-        });
+        dispatch.session.fetchUserInfo();
     }, []);
+
+    console.log('home');
 
     return (
         <Card title="Home">
-            <p>Welcome to the Home page, {session.user?.name}</p>
+            <p>Welcome to the Home page, {user?.name}</p>
             <AuthWrapper authority="user-confirm">
                 <Button>Confirm</Button>
             </AuthWrapper>

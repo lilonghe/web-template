@@ -36,6 +36,9 @@ export default function BasicLayout({ children }) {
                     <Menu.Item key="about" icon={<img src={IconUnfold} className="icon" />}>
                         <Link to='/about'>About</Link>  
                     </Menu.Item>
+                    <Menu.Item key="private" icon={<img src={IconUnfold} className="icon" />}>
+                        <Link to='/private'>Private</Link>  
+                    </Menu.Item>
                 </Menu>
             </Layout.Sider>
             <Layout>

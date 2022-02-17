@@ -12,7 +12,6 @@ export function App () {
     <Provider store={store}>
       <RouteList />
     </Provider>
-
   )
 }
 

@@ -15,6 +15,16 @@ const routes = [
     authority: 'private'
   },
   {
+    path: '/list',
+    component: lazy(() => import('./pages/list')),
+    children: [
+      {
+        path: ':id',
+        component: lazy(() => import('./pages/list/detail'))
+      }
+    ]
+  },
+  {
     path: '/403',
     component: lazy(() => import('./pages/exception/403'))
   }

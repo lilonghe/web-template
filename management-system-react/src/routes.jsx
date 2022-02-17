@@ -15,12 +15,18 @@ const routes = [
     authority: 'private'
   },
   {
-    path: '/list',
-    component: lazy(() => import('./pages/list')),
+    path: '/project/:id',
+    component: lazy(() => import('./pages/project/detail')),
     children: [
       {
-        path: ':id',
-        component: lazy(() => import('./pages/list/detail'))
+        path: 'info',
+        title: 'info',
+        component: lazy(() => import('./pages/project/detail/info'))
+      },
+      {
+        path: 'setting',
+        title: 'setting',
+        component: lazy(() => import('./pages/project/detail/setting'))
       }
     ]
   },

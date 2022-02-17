@@ -3,9 +3,9 @@ import { Suspense } from 'react'
 import { checkPermission } from './auth'
 
 export default function AuthRoute ({ route }) {
-  const { authority } = route
+  const { authority, children } = route
   if (checkPermission(authority)) {
-    return <Suspense fallback={<>...</>}><route.component /></Suspense>
+    return <Suspense fallback={<>...</>}><route.component routes={children} /></Suspense>
   } else {
     return <Navigate replace to='/403' />
   }

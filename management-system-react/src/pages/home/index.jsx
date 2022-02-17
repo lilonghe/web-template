@@ -2,6 +2,7 @@ import { Button, Card, Modal } from 'antd'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AuthWrapper from '@components/auth/AuthWrapper'
+import { NavLink } from 'react-router-dom'
 
 export default function Home () {
   const dispatch = useDispatch()
@@ -26,6 +27,8 @@ export default function Home () {
           Inject Private Permission
         </Button>
       </AuthWrapper>
+
+      <NavLink to='/project/123/info'>TabNav</NavLink>
     </Card>
   )
 }

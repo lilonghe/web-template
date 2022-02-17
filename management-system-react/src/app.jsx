@@ -29,24 +29,14 @@ const RouteList = () => {
 
 const renderRoute = (routeList) => {
   return routeList.map(route => {
-    if (route.children) {
-      return (
-        <Route
-          key={route.path}
-          path={route.path}
-          element={<AuthRoute route={route} />}
-        >
-          {renderRoute(route.children)}
-        </Route>
-      )
-    } else {
-      return (
-        <Route
-          key={route.path}
-          path={route.path}
-          element={<AuthRoute route={route} />}
-        />
-      )
-    }
+    return (
+      <Route
+        key={route.path}
+        path={route.path}
+        element={<AuthRoute route={route} />}
+      >
+        {route.children && renderRoute(route.children)}
+      </Route>
+    )
   })
 }

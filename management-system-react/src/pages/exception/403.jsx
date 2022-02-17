@@ -1,7 +1,7 @@
-export default function Page403() {
-    return (
-        <div>
-            No Permission.
-        </div>
-    )
+export default function Page403 () {
+  return (
+    <div>
+      No Permission.
+    </div>
+  )
 }

@@ -1,9 +1,8 @@
-import { checkPermission } from './auth';
+import { checkPermission } from './auth'
 
-export default function AuthRoute({ children }) {
-    const { authority } = route;
-    if (checkPermission(authority)) {
-        return children
-    }
-    return null;
+export default function AuthRoute ({ children, authority }) {
+  if (checkPermission(authority)) {
+    return children
+  }
+  return null
 }

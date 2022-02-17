@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   server: {
-    port: 9090,
+    port: 9090
   },
   plugins: [react()],
   resolve: {
@@ -12,7 +12,7 @@ export default defineConfig({
       '@components': '/src/components',
       '@contexts': '/src/contexts',
       '@hooks': '/src/hooks',
-      '@pages': '/src/pages',
+      '@pages': '/src/pages'
     }
   }
 })

@@ -1,27 +1,31 @@
-import { Button, Card } from "antd";
-import { useEffect } from "react";
-import useAuth from "@hooks/useAuth";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import AuthWrapper from '@components/auth/AuthWrapper';
+import { Button, Card, Modal } from 'antd'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import AuthWrapper from '@components/auth/AuthWrapper'
 
-export default function Home() {
-    const dispatch = useDispatch();
-    const { user } = useSelector(state=>state.session)
-    const {AuthWrapper} = useAuth();
+export default function Home () {
+  const dispatch = useDispatch()
+  const { user, permissions } = useSelector(state => state.session)
 
-    useEffect(() => {
-        dispatch.session.fetchUserInfo();
-    }, []);
+  useEffect(() => {
+    dispatch.session.fetchUserInfo()
+  }, [])
 
-    console.log('home');
-
-    return (
-        <Card title="Home">
-            <p>Welcome to the Home page, {user?.name}</p>
-            <AuthWrapper authority="user-confirm">
-                <Button>Confirm</Button>
-            </AuthWrapper>
-        </Card>
-    )
+  return (
+    <Card title='Home'>
+      <p>Welcome to the Home page, {user?.name}</p>
+      <AuthWrapper authority='user-confirm'>
+        <Button
+          onClick={() => {
+            dispatch.session.savePermissions([...permissions, 'private'])
+            Modal.success({
+              title: 'Now you can access [Private] page.'
+            })
+          }}
+        >
+          Inject Private Permission
+        </Button>
+      </AuthWrapper>
+    </Card>
+  )
 }

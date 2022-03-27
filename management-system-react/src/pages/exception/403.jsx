@@ -1,7 +1,9 @@
+import styles from './exception.module.less'
+
 export default function Page403 () {
   return (
-    <div>
-      No Permission.
+    <div className={styles.page403}>
+      No Permission
     </div>
   )
 }

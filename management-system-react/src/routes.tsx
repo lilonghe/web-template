@@ -1,6 +1,14 @@
-import { lazy } from 'react'
+import { lazy, LazyExoticComponent } from 'react'
 
-const routes = [
+interface IRoute {
+  path: string
+  title?: string
+  component: LazyExoticComponent<any>
+  authority?: string | string[]
+  children?: IRoute[]
+}
+
+const routes: IRoute[] = [
   {
     path: '/',
     component: lazy(() => import('./pages/home'))
@@ -37,3 +45,7 @@ const routes = [
 ]
 
 export default routes
+
+export type {
+  IRoute
+}

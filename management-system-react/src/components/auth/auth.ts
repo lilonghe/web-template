@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux'
+import { RootState } from 'src/store'
 import config from '../../config'
 
-export function checkPermission (authority, mode = config.PERMISSION_AUTH_MODE) {
-  const { permissions } = useSelector(state => state.session)
+export function checkPermission (authority: string | string[], mode = config.PERMISSION_AUTH_MODE) {
+  const { permissions } = useSelector((state: RootState) => state.session)
 
   if (authority) {
     if (typeof authority === 'string') {

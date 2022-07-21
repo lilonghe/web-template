@@ -1,10 +1,10 @@
 import 'antd/dist/antd.css'
 import './app.module.less'
 import BasicLayout from './components/layout/basicLayout'
-import routes from './routes'
+import routes, { IRoute } from './routes'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Provider, useDispatch, useSelector } from 'react-redux'
-import store from './store'
+import store, { RootState } from './store'
 import AuthRoute from '@components/auth/AuthRoute'
 import Loading from '@components/loading'
 import { useEffect } from 'react'
@@ -18,7 +18,7 @@ export function App () {
 }
 
 const RouteList = () => {
-  const { user } = useSelector(state => state.session)
+  const { user } = useSelector((state: RootState) => state.session)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -40,8 +40,8 @@ const RouteList = () => {
   )
 }
 
-const renderRoute = (routeList) => {
-  return routeList.map(route => {
+const renderRoute = (routeList: IRoute[]) => {
+  return routeList.map((route: IRoute) => {
     return (
       <Route
         key={route.path}

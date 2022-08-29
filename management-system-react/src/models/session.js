@@ -1,3 +1,4 @@
+import { getUser } from '../services/user'
 
 export const session = {
   state: {
@@ -20,10 +21,11 @@ export const session = {
   },
   effects: () => ({
     async fetchUserInfo () {
-      this.saveUserInfo({
-        name: 'John Doe'
-      })
-      this.savePermissions(['user-confirm'])
+      const { data } = await getUser()
+      if (data) {
+        this.saveUserInfo(data)
+        this.savePermissions(['user-confirm'])
+      }
     }
   })
 }

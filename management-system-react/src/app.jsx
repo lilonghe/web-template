@@ -1,4 +1,4 @@
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.variable.min.css'
 import './app.module.less'
 import BasicLayout from './components/layout/basicLayout'
 import routes from './routes'
@@ -8,12 +8,18 @@ import store from './store'
 import AuthRoute from '@components/auth/AuthRoute'
 import Loading from '@components/loading'
 import { useEffect } from 'react'
+import { IconContext } from 'react-icons'
+import { ConfigProvider } from 'antd'
 
 export function App () {
   return (
-    <Provider store={store}>
-      <RouteList />
-    </Provider>
+    <IconContext.Provider value={{ className: 'icon' }}>
+      <ConfigProvider>
+        <Provider store={store}>
+          <RouteList />
+        </Provider>
+      </ConfigProvider>
+    </IconContext.Provider>
   )
 }
 

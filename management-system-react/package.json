@@ -4,7 +4,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "lint": "standard --fix"
+    "lint": "eslint --fix --ext .js,.jsx ./src"
   },
   "husky": {
     "hooks": {
@@ -13,6 +13,12 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
+    "eslint": "^8.23.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-react": "^7.31.1",
     "husky": "^4.3.8",
     "less": "^4.1.2",
     "mockjs": "^1.1.0",

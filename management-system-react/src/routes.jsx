@@ -1,18 +1,20 @@
 import { lazy } from 'react'
+import { AiOutlineHome, AiOutlineUser, AiOutlineSecurityScan, AiOutlineProject } from 'react-icons/ai'
 
 const routes = [
   {
     path: '/',
-    component: lazy(() => import('./pages/home'))
+    component: lazy(() => import('./pages/home')),
+    icon: <AiOutlineHome />,
+    isNav: true,
+    title: 'Home'
   },
   {
-    path: '/about',
-    component: lazy(() => import('./pages/about'))
-  },
-  {
-    path: '/private',
-    component: lazy(() => import('./pages/private')),
-    authority: 'private'
+    path: '/project',
+    component: lazy(() => import('./pages/project')),
+    icon: <AiOutlineProject />,
+    isNav: true,
+    title: 'Project'
   },
   {
     path: '/project/:id',
@@ -29,6 +31,21 @@ const routes = [
         component: lazy(() => import('./pages/project/detail/setting'))
       }
     ]
+  },
+  {
+    path: '/private',
+    component: lazy(() => import('./pages/private')),
+    authority: 'private',
+    icon: <AiOutlineSecurityScan />,
+    isNav: true,
+    title: 'Private'
+  },
+  {
+    path: '/about',
+    component: lazy(() => import('./pages/about')),
+    icon: <AiOutlineUser />,
+    isNav: true,
+    title: 'About'
   },
   {
     path: '/403',

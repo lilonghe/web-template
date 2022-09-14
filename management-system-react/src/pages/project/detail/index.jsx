@@ -1,6 +1,6 @@
-import { Outlet } from 'react-router-dom'
-import { useParams } from 'react-router'
 import TabsNav from '@components/tabsNav'
+import { useParams } from 'react-router'
+import { Outlet } from 'react-router-dom'
 
 export default function Detail ({ routes }) {
   const { id } = useParams()

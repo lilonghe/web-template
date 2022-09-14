@@ -1,7 +1,8 @@
-import { Navigate } from 'react-router-dom'
-import { Suspense } from 'react'
-import { checkPermission } from './auth'
 import Loading from '@components/loading'
+import { Suspense } from 'react'
+import { Navigate } from 'react-router-dom'
+
+import { checkPermission } from './auth'
 
 export default function AuthRoute ({ route }) {
   const { authority, children } = route

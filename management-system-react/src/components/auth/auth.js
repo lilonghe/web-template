@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+
 import config from '../../config'
 
 export function checkPermission (authority, mode = config.PERMISSION_AUTH_MODE) {

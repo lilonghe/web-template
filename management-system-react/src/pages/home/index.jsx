@@ -1,6 +1,6 @@
+import AuthWrapper from '@components/auth/AuthWrapper'
 import { Button, Card, Modal } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import AuthWrapper from '@components/auth/AuthWrapper'
 import { NavLink } from 'react-router-dom'
 
 export default function Home () {

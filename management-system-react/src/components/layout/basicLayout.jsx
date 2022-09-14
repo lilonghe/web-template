@@ -1,8 +1,8 @@
-import { Dropdown, Layout, Menu, Avatar } from 'antd'
-import styles from './basicLayout.module.less'
+import { Avatar, Dropdown, Layout, Menu } from 'antd'
 import { useState } from 'react'
-
 import { useSelector } from 'react-redux'
+
+import styles from './basicLayout.module.less'
 import Nav from './nav'
 
 export default function BasicLayout ({ children }) {

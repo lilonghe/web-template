@@ -1,8 +1,9 @@
+import { checkPermission } from '@components/auth/auth'
+import { Menu } from 'antd'
+import { Link } from 'react-router-dom'
+
 import routes from '../../routes'
 import styles from './basicLayout.module.less'
-import { Menu } from 'antd'
-import { checkPermission } from '@components/auth/auth'
-import { Link } from 'react-router-dom'
 
 export default function Nav () {
   const defaultActiveKey = location.pathname.split('/')[1] || '/'

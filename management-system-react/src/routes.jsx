@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { AiOutlineHome, AiOutlineUser, AiOutlineSecurityScan, AiOutlineProject } from 'react-icons/ai'
+import { AiOutlineHome, AiOutlineProject, AiOutlineSecurityScan, AiOutlineUser } from 'react-icons/ai'
 
 const routes = [
   {

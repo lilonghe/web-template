@@ -1,5 +1,6 @@
-import { request } from './request'
 import config from '@/config'
+
+import { request } from './request'
 
 export async function getUser () {
   return request(`${config.MOCK_API}/user/current`)

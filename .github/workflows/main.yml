@@ -32,5 +32,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run build
         run: |
+          cd management-system-react
           npm install
           npm run build

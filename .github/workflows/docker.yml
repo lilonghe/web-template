@@ -18,6 +18,7 @@ jobs:
       - name: Build
         run: docker build -t frontend:${{ env.SHORT_SHA }} .
   deploy:
+    needs: build
     runs-on: [self-hosted, docker]
     defaults:
       run:

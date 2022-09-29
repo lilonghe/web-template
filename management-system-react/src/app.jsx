@@ -18,9 +18,9 @@ export function App () {
     dispatch.session.fetchUserInfo()
   }, [])
 
-  if (!user) {
-    return <Loading />
-  }
+  // if (!user) {
+  //   return <Loading />
+  // }
 
   return (
     <Router>

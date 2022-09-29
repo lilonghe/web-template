@@ -1,7 +1,6 @@
 import 'antd/dist/antd.variable.min.css'
 import './app.module.less'
 
-import Loading from '@components/loading'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter as Router, Routes } from 'react-router-dom'

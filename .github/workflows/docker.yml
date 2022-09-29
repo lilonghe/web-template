@@ -10,8 +10,9 @@ jobs:
     runs-on: [self-hosted, docker]
     steps:
       - uses: actions/checkout@v3
-      - name: Build
+      - name: Choose template
         run: cd management-system-react
+      - name: Build
         run: docker build -t frontend .
       - name: Deploy
         run: docker run --name frontend -p 80:80 frontend:latest

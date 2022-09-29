@@ -12,5 +12,5 @@ RUN node node_modules/esbuild/install.js
 RUN npm run build
 
 FROM nginx:1.23-alpine
-COPY nginx.conf /etc/nginx
+COPY nginx.conf /etc/nginx/sites-available/default.conf
 COPY --from=builder /app/dist /usr/share/nginx/html

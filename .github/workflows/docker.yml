@@ -19,4 +19,4 @@ jobs:
         continue-on-error: true
         run: docker stop frontend
       - name: Deploy
-        run: docker run --name frontend -p 80:80 frontend:${{ github.sha }}
+        run: docker run --name frontend -d -p 80:80 frontend:${{ github.sha }}

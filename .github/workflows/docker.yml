@@ -24,10 +24,12 @@ jobs:
       run:
         working-directory: ./management-system-react
     steps:
-      - name: Stop old container
-        continue-on-error: true
-        run: docker stop $(docker ps --filter name=frontend -q)
       - name: Get commit tag
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+      - name: Stop old container
+        continue-on-error: true
+        run: |
+          docker stop $(docker ps --filter name=frontend -q)
+          docker rm frontend-${{ env.SHORT_SHA }}
       - name: Deploy
         run: docker run --name frontend-${{ env.SHORT_SHA }} -d -p 80:80 frontend:${{ env.SHORT_SHA }}

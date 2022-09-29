@@ -19,6 +19,6 @@ jobs:
         run: docker build -t frontend:${{ env.SHORT_SHA }} .
       - name: Stop old container
         continue-on-error: true
-        run: docker stop frontend
+        run: docker stop $(docker ps --filter ancestor='frontend' -q)
       - name: Deploy
         run: docker run --name frontend-${{ env.SHORT_SHA }} -d -p 80:80 frontend:${{ env.SHORT_SHA }}

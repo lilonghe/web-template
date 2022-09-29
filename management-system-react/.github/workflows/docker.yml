@@ -1,0 +1,17 @@
+name: Self Hosted Docker
+
+on:
+  push:
+    branches: ["test-runner"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: [self-hosted, docker]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: cd management-system-react
+        run: docker build -t frontend .
+      - name: Deploy
+        run: docker run --name frontend -p 80:80 frontend:latest

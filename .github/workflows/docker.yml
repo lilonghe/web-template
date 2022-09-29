@@ -21,4 +21,4 @@ jobs:
         continue-on-error: true
         run: docker stop frontend
       - name: Deploy
-        run: docker run --name frontend -d -p 80:80 frontend:${{ env.SHORT_SHA }}
+        run: docker run --name frontend:${{ env.SHORT_SHA }} -d -p 80:80 frontend:${{ env.SHORT_SHA }}

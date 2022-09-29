@@ -13,10 +13,12 @@ jobs:
         working-directory: ./management-system-react
     steps:
       - uses: actions/checkout@v3
+      - name: Get commit tag
+        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       - name: Build
-        run: docker build -t frontend:${{ github.sha }} .
+        run: docker build -t frontend:${{ env.SHORT_SHA }} .
       - name: Stop old container
         continue-on-error: true
         run: docker stop frontend
       - name: Deploy
-        run: docker run --name frontend -d -p 80:80 frontend:${{ github.sha }}
+        run: docker run --name frontend -d -p 80:80 frontend:${{ env.SHORT_SHA }}

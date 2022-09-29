@@ -14,6 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build
-        run: docker build -t frontend .
+        run: docker build -t frontend:${{ github.sha }} .
       - name: Deploy
-        run: docker run --name frontend -p 80:80 frontend:latest
+        run: |
+          docker stop frontend
+          docker run --name frontend:${{ github.sha }} -p 80:80 frontend:latest

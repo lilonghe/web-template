@@ -10,6 +10,8 @@
             "@components/*": ["src/components/*"],
             "@contexts/*": ["src/contexts/*"],
             "@assets/*": ["src/assets/*"],
+            "@services/*": ["src/services/*"],
+            "@utils/*": ["src/utils/*"],
         }
     },
     "exclude": [

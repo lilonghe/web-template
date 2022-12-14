@@ -33,6 +33,21 @@ const routes = [
     ]
   },
   {
+    isGroup: true,
+    isNav: true,
+    icon: <AiOutlineProject />,
+    title: 'Parent',
+    path: '/parent',
+    children: [
+      {
+        path: '/parent/child',
+        title: 'Child',
+        isNav: true,
+        component: lazy(() => import('./pages/project'))
+      }
+    ]
+  },
+  {
     path: '/private',
     component: lazy(() => import('./pages/private')),
     authority: 'private',

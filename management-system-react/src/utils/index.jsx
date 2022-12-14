@@ -3,6 +3,10 @@ import { Route } from 'react-router-dom'
 
 export function renderRoutes (routeList) {
   return routeList.map(route => {
+    if (route.isGroup) {
+      return route.children && renderRoutes(route.children)
+    }
+
     return (
       <Route
         key={route.path}

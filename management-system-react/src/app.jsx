@@ -1,4 +1,3 @@
-import 'antd/dist/antd.variable.min.css'
 import './app.module.less'
 
 import Loading from '@components/loading'

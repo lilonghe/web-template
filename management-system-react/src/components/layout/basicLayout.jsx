@@ -1,4 +1,5 @@
 import { Avatar, Dropdown, Layout, Menu } from 'antd'
+import { useToken } from 'antd/es/theme/internal'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -8,6 +9,7 @@ import Nav from './nav'
 export default function BasicLayout ({ children }) {
   const [collapsed, setCollapsed] = useState(false)
   const { user } = useSelector(state => state.session)
+  const [token] = useToken()
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed)
@@ -34,7 +36,7 @@ export default function BasicLayout ({ children }) {
             className={styles.collapseIcon}
           />
           <Dropdown overlay={<Menu><Menu.Item key='exit'>Exit</Menu.Item></Menu>}>
-            <Avatar className={styles.avatar}>{user.name[0]}</Avatar>
+            <Avatar className={styles.avatar} style={{ background: token.colorPrimary }}>{user.name[0]}</Avatar>
           </Dropdown>
         </Layout.Header>
         <div className={styles.contentWrapper}>

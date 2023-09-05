@@ -1,3 +1,4 @@
+import { RootState } from '@/store'
 import AuthWrapper from '@components/auth/AuthWrapper'
 import { Button, Card, Modal } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
@@ -5,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 export default function Home () {
   const dispatch = useDispatch()
-  const { user, permissions } = useSelector(state => state.session)
+  const { user, permissions } = useSelector((state: RootState) => state.session)
 
   return (
     <Card title='Home'>

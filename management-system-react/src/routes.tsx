@@ -1,7 +1,18 @@
-import { lazy } from 'react'
+import { LazyExoticComponent, ReactNode, lazy } from 'react'
 import { AiOutlineHome, AiOutlineProject, AiOutlineSecurityScan, AiOutlineUser } from 'react-icons/ai'
 
-const routes = [
+export interface IMyRoute {
+    path: string
+    component?: LazyExoticComponent<any>
+    children?: IMyRoute[]
+    title?: string
+    icon?: ReactNode
+    isNav?: boolean
+    isGroup?: boolean
+    authority?: string | string[]
+}
+
+const routes: IMyRoute[] = [
   {
     path: '/',
     component: lazy(() => import('./pages/home')),

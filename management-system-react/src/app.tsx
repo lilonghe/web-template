@@ -9,9 +9,10 @@ import BasicLayout from './components/layout/basicLayout'
 import Login from './pages/login'
 import routes from './routes'
 import { renderRoutes } from './utils'
+import { RootState } from './store'
 
 export function App () {
-  const { user } = useSelector(state => state.session)
+  const { user } = useSelector((state: RootState) => state.session)
   const dispatch = useDispatch()
   const location = useLocation()
 

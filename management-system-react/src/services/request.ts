@@ -1,12 +1,18 @@
 import config from '@/config'
 
+export interface CommonResponse<T> {
+    err?: string
+    errStack?: unknown
+    data?: T
+}
+
 /**
  *
  * @param {*} url
  * @param {*} userOptions
  * @returns  err, data, errStack
  */
-export async function request (url, userOptions) {
+export async function request<T> (url: string, userOptions?: any): Promise<CommonResponse<T>> {
   const options = {
     method: 'GET',
     credentials: 'include',

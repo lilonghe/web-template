@@ -1,8 +1,10 @@
+import { IMyRoute } from '@/routes'
 import AuthRoute from '@components/auth/AuthRoute'
+import { ReactNode } from 'react'
 import { Route } from 'react-router-dom'
 
-export function renderRoutes (routeList) {
-  return routeList.map(route => {
+export function renderRoutes (routeList: IMyRoute[]): ReactNode[] {
+  return routeList.map((route: IMyRoute) => {
     if (route.isGroup) {
       return route.children && renderRoutes(route.children)
     }

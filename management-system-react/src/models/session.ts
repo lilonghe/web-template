@@ -1,10 +1,22 @@
 import { getUser } from '../services/user'
+import { createModel } from '@rematch/core'
+import { RootModel } from '.'
 
-export const session = {
+export interface IUser {
+    id: string
+    name: string
+}
+
+export type ISession = {
+    user: IUser | undefined
+    permissions: string[]
+}
+
+export const session = createModel<RootModel>()({
   state: {
     user: undefined,
     permissions: []
-  },
+  } as ISession,
   reducers: {
     saveUserInfo (state, payload) {
       return {
@@ -28,4 +40,4 @@ export const session = {
       }
     }
   })
-}
+})

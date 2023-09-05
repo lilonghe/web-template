@@ -2,15 +2,15 @@ import { checkPermission } from '@components/auth/auth'
 import { Menu } from 'antd'
 import { Link, matchPath } from 'react-router-dom'
 
-import routes from '../../routes'
+import routes, { IMyRoute } from '../../routes'
 import styles from './basicLayout.module.less'
 
 export default function Nav () {
-  let rootActiveKey
+  let rootActiveKey: string = ''
   let isMatchNav = false
   let defaultActiveKey = location.pathname || '/'
 
-  const generateNav = (routes, parent) => {
+  const generateNav = (routes: IMyRoute[], parent?: IMyRoute) => {
     return routes.filter(r => r.isNav && checkPermission(r.authority)).map(r => {
       const isMatchPath = matchPath(r.path, defaultActiveKey)
 
@@ -24,7 +24,7 @@ export default function Nav () {
 
       if (r.isGroup) {
         return <Menu.SubMenu key={r.path} title={r.title} icon={r.icon}>
-          {generateNav(r.children, r)}
+          {r.children && generateNav(r.children, r)}
         </Menu.SubMenu>
       }
       return <Menu.Item

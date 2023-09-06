@@ -12,11 +12,13 @@ export type ISession = {
     permissions: string[]
 }
 
+const initState: ISession = {
+  user: undefined,
+  permissions: []
+}
+
 export const session = createModel<RootModel>()({
-  state: {
-    user: undefined,
-    permissions: []
-  } as ISession,
+  state: { ...initState },
   reducers: {
     saveUserInfo (state, payload) {
       return {
@@ -29,6 +31,9 @@ export const session = createModel<RootModel>()({
         ...state,
         permissions: payload
       }
+    },
+    clearState () {
+      return { ...initState }
     }
   },
   effects: () => ({

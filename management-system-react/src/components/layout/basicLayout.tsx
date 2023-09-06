@@ -1,16 +1,12 @@
-import { Avatar, Dropdown, Layout } from 'antd'
-import { useToken } from 'antd/es/theme/internal'
+import { Layout } from 'antd'
 import { ReactNode, useState } from 'react'
-import { useSelector } from 'react-redux'
 
 import styles from './basicLayout.module.less'
 import Nav from './nav'
-import { RootState } from '@/store'
+import User from './user'
 
 export default function BasicLayout ({ children } : { children: ReactNode }) {
   const [collapsed, setCollapsed] = useState(false)
-  const { user } = useSelector((state: RootState) => state.session)
-  const [, token] = useToken()
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed)
@@ -36,9 +32,7 @@ export default function BasicLayout ({ children } : { children: ReactNode }) {
             // src={collapsed ? AiOutlineFolder : AiOutlineFolderOpen}
             className={styles.collapseIcon}
           />
-          <Dropdown menu={{ items: [{ key: 'exit', label: 'Exit' }] }}>
-            <Avatar className={styles.avatar} style={{ background: token.colorPrimary }}>{user?.name[0]}</Avatar>
-          </Dropdown>
+          <User />
         </Layout.Header>
         <div className={styles.contentWrapper}>
           <Layout.Content className={styles.mainContent}>

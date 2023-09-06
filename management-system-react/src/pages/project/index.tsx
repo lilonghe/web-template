@@ -2,6 +2,24 @@ import { Table } from 'antd'
 import { Link } from 'react-router-dom'
 
 export default function Index () {
+  const columns = [
+    {
+      key: 'id',
+      title: 'No.',
+      dataIndex: 'id'
+    },
+    {
+      key: 'name',
+      title: 'name',
+      dataIndex: 'name'
+    },
+    {
+      key: 'action',
+      title: 'name',
+      dataIndex: 'id',
+      render: (t:string) => <Link to={'/project/' + t + '/info'}>View</Link>
+    }
+  ]
   const data = [
     {
       id: 1,
@@ -14,11 +32,7 @@ export default function Index () {
   ]
   return (
     <div>
-      <Table dataSource={data}>
-        <Table.Column dataIndex='id' key='id' title='No.' />
-        <Table.Column dataIndex='name' key='name' title='Name' />
-        <Table.Column render={(_, r: typeof data[0]) => <Link to={'/project/' + r.id + '/info'}>View</Link>} />
-      </Table>
+      <Table rowKey={r => r.id} dataSource={data} columns={columns} />
     </div>
   )
 }

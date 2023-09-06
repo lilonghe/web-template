@@ -1,4 +1,4 @@
-import { Avatar, Dropdown, Layout, Menu } from 'antd'
+import { Avatar, Dropdown, Layout } from 'antd'
 import { useToken } from 'antd/es/theme/internal'
 import { ReactNode, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -36,7 +36,7 @@ export default function BasicLayout ({ children } : { children: ReactNode }) {
             // src={collapsed ? AiOutlineFolder : AiOutlineFolderOpen}
             className={styles.collapseIcon}
           />
-          <Dropdown overlay={<Menu><Menu.Item key='exit'>Exit</Menu.Item></Menu>}>
+          <Dropdown menu={{ items: [{ key: 'exit', label: 'Exit' }] }}>
             <Avatar className={styles.avatar} style={{ background: token.colorPrimary }}>{user?.name[0]}</Avatar>
           </Dropdown>
         </Layout.Header>

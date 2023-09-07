@@ -11,7 +11,7 @@ export default function Home () {
   return (
     <Card title='Home'>
       <p>Welcome to the Home page, {user?.name}</p>
-      <AuthWrapper authority='user-confirm'>
+      {!permissions.includes('private') && <AuthWrapper authority='user-confirm'>
         <Button
           onClick={() => {
             dispatch.session.savePermissions([...permissions, 'private'])
@@ -22,7 +22,7 @@ export default function Home () {
         >
           Inject Private Permission
         </Button>
-      </AuthWrapper>
+      </AuthWrapper>}
 
       <NavLink to='/project/123/info'>TabNav</NavLink>
     </Card>

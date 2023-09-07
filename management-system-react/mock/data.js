@@ -2,7 +2,8 @@ import Mockjs from 'mockjs'
 
 export const userInfo = Mockjs.mock({
   id: '@uuid',
-  name: '@name'
+  name: '@name',
+  permissions: ['user-confirm']
 })
 
 export const projectList = Mockjs.mock({

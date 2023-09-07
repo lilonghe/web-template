@@ -1,11 +1,9 @@
 import config from '@/config'
 import { request } from './request'
+import { IGetProjectListResponse } from './type'
 
 export async function getProjectList (params: any) {
-  return request<{
-    list: { id: string, name: string }[],
-    total: number
-  }>(`${config.MOCK_API}/projects`, { params })
+  return request<IGetProjectListResponse>(`${config.MOCK_API}/projects`, { params })
 }
 
 export async function deleteProject (params: any) {

@@ -41,7 +41,7 @@ export const session = createModel<RootModel>()({
       const { data } = await getUser()
       if (data) {
         this.saveUserInfo(data)
-        this.savePermissions(['user-confirm'])
+        this.savePermissions(data.permissions)
       }
     }
   })

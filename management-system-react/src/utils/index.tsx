@@ -20,3 +20,13 @@ export function renderRoutes (routeList: IMyRoute[]): ReactNode[] {
     )
   })
 }
+
+export function obj2Query (obj: any) {
+  const str = []
+  for (const p in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, p)) {
+      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
+    }
+  }
+  return str.join('&')
+}

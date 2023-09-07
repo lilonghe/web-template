@@ -1,4 +1,5 @@
 import config from '@/config'
+import { obj2Query } from '@/utils'
 
 export interface CommonResponse<T> {
     err?: string
@@ -21,6 +22,16 @@ export async function request<T> (url: string, userOptions?: any): Promise<Commo
 
   if (!url.startsWith('http') && !url.startsWith(config.MOCK_API)) {
     url = config.API_BASE_URL + url
+  }
+
+  if (options.method.toLowerCase() !== 'get') {
+    if (options.params) {
+      options.data = JSON.stringify(options.params)
+    }
+  } else {
+    if (options.params) {
+      url += '?' + obj2Query(options.params)
+    }
   }
 
   return fetch(url, options)

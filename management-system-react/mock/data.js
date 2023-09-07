@@ -4,3 +4,13 @@ export const userInfo = Mockjs.mock({
   id: '@uuid',
   name: '@name'
 })
+
+export const projectList = Mockjs.mock({
+  'list|10': [
+    {
+      id: '@uuid',
+      name: '@name'
+    }
+  ],
+  total: '@integer(10, 100)'
+})

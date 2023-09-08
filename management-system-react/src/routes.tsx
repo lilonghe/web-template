@@ -54,7 +54,7 @@ const routes: IMyRoute[] = [
         path: '/parent/child',
         title: 'Child',
         isNav: true,
-        component: lazy(() => import('./pages/project'))
+        component: lazy(() => import('./pages/child'))
       }
     ]
   },

@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
-import BasicLayout from './components/layout/basicLayout'
+import BasicLayout from './components/layout/BasicLayout'
 import Login from './pages/login'
 import routes from './routes'
 import { renderRoutes } from './utils'

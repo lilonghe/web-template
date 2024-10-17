@@ -2,8 +2,9 @@ import { Layout } from 'antd'
 import { ReactNode, useState } from 'react'
 
 import styles from './basicLayout.module.less'
-import Nav from './nav'
-import User from './user'
+import Nav from './Nav'
+import User from './User'
+import { AiOutlineFolder, AiOutlineFolderOpen } from 'react-icons/ai'
 
 export default function BasicLayout ({ children } : { children: ReactNode }) {
   const [collapsed, setCollapsed] = useState(false)

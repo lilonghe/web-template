@@ -1,6 +1,6 @@
 import './app.module.less'
 
-import Loading from '@components/loading'
+import Loading from '@/components/loading'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes, useLocation } from 'react-router-dom'

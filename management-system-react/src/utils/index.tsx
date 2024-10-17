@@ -1,5 +1,5 @@
 import { IMyRoute } from '@/routes'
-import AuthRoute from '@components/auth/AuthRoute'
+import AuthRoute from '@/components/auth/AuthRoute'
 import { ReactNode } from 'react'
 import { Route } from 'react-router-dom'
 

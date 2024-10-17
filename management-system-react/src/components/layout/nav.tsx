@@ -1,4 +1,4 @@
-import { checkPermission } from '@components/auth/auth'
+import { checkPermission } from '@/components/auth/auth'
 import { Menu } from 'antd'
 import { Link, matchPath } from 'react-router-dom'
 

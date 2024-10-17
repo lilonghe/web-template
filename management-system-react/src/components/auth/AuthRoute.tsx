@@ -1,4 +1,4 @@
-import Loading from '@components/loading'
+import Loading from '@/components/loading'
 import { Suspense } from 'react'
 import { Navigate } from 'react-router-dom'
 

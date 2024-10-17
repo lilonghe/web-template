@@ -1,5 +1,5 @@
 import { RootState } from '@/store'
-import AuthWrapper from '@components/auth/AuthWrapper'
+import AuthWrapper from '@/components/auth/AuthWrapper'
 import { Button, Card, Modal } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'

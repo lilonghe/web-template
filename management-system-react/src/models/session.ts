@@ -1,48 +1,48 @@
-import { getUser } from '../services/user'
 import { createModel } from '@rematch/core'
 import { RootModel } from '.'
+import { getUser } from '../services/user'
 
 export interface IUser {
-    id: string
-    name: string
+  id: string
+  name: string
 }
 
 export type ISession = {
-    user: IUser | undefined
-    permissions: string[]
+  user: IUser | undefined
+  permissions: string[]
 }
 
 const initState: ISession = {
   user: undefined,
-  permissions: []
+  permissions: [],
 }
 
 export const session = createModel<RootModel>()({
   state: { ...initState },
   reducers: {
-    saveUserInfo (state, payload) {
+    saveUserInfo(state, payload) {
       return {
         ...state,
-        user: payload
+        user: payload,
       }
     },
-    savePermissions (state, payload) {
+    savePermissions(state, payload) {
       return {
         ...state,
-        permissions: payload
+        permissions: payload,
       }
     },
-    clearState () {
+    clearState() {
       return { ...initState }
-    }
+    },
   },
   effects: () => ({
-    async fetchUserInfo () {
+    async fetchUserInfo() {
       const { data } = await getUser()
       if (data) {
         this.saveUserInfo(data)
         this.savePermissions(data.permissions)
       }
-    }
-  })
+    },
+  }),
 })

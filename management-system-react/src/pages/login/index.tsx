@@ -14,13 +14,21 @@ const Login = () => {
     navigate('/')
   }
 
-  return <div>
-    <Spin spinning={loading}>
-      <Button type='primary' disabled={loading} onClick={() => {
-        onSuccess()
-      }}>Login</Button>
-    </Spin>
-  </div>
+  return (
+    <div>
+      <Spin spinning={loading}>
+        <Button
+          type="primary"
+          disabled={loading}
+          onClick={() => {
+            onSuccess()
+          }}
+        >
+          Login
+        </Button>
+      </Spin>
+    </div>
+  )
 }
 
 export default Login

@@ -1,4 +1,4 @@
-export default function Private () {
+export default function Private() {
   return (
     <div>
       <h1>Private</h1>

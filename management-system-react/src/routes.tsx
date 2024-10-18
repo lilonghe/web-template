@@ -1,15 +1,20 @@
 import { LazyExoticComponent, ReactNode, lazy } from 'react'
-import { AiOutlineHome, AiOutlineProject, AiOutlineSecurityScan, AiOutlineUser } from 'react-icons/ai'
+import {
+  AiOutlineHome,
+  AiOutlineProject,
+  AiOutlineSecurityScan,
+  AiOutlineUser,
+} from 'react-icons/ai'
 
 export interface IMyRoute {
-    path: string
-    component?: LazyExoticComponent<any>
-    children?: IMyRoute[]
-    title?: string
-    icon?: ReactNode
-    isNav?: boolean
-    isGroup?: boolean
-    authority?: string | string[]
+  path: string
+  component?: LazyExoticComponent<any>
+  children?: IMyRoute[]
+  title?: string
+  icon?: ReactNode
+  isNav?: boolean
+  isGroup?: boolean
+  authority?: string | string[]
 }
 
 const routes: IMyRoute[] = [
@@ -18,14 +23,14 @@ const routes: IMyRoute[] = [
     component: lazy(() => import('./pages/home')),
     icon: <AiOutlineHome />,
     isNav: true,
-    title: 'Home'
+    title: '首页',
   },
   {
     path: '/project',
     component: lazy(() => import('./pages/project')),
     icon: <AiOutlineProject />,
     isNav: true,
-    title: 'Project'
+    title: '项目',
   },
   {
     path: '/project/:id',
@@ -34,29 +39,29 @@ const routes: IMyRoute[] = [
       {
         path: 'info',
         title: 'info',
-        component: lazy(() => import('./pages/project/detail/info'))
+        component: lazy(() => import('./pages/project/detail/info')),
       },
       {
         path: 'setting',
         title: 'setting',
-        component: lazy(() => import('./pages/project/detail/setting'))
-      }
-    ]
+        component: lazy(() => import('./pages/project/detail/setting')),
+      },
+    ],
   },
   {
     isGroup: true,
     isNav: true,
     icon: <AiOutlineProject />,
-    title: 'Parent',
+    title: '父级导航',
     path: '/parent',
     children: [
       {
         path: '/parent/child',
         title: 'Child',
         isNav: true,
-        component: lazy(() => import('./pages/child'))
-      }
-    ]
+        component: lazy(() => import('./pages/child')),
+      },
+    ],
   },
   {
     path: '/private',
@@ -64,19 +69,19 @@ const routes: IMyRoute[] = [
     authority: 'private',
     icon: <AiOutlineSecurityScan />,
     isNav: true,
-    title: 'Private'
+    title: '私有页面',
   },
   {
     path: '/about',
     component: lazy(() => import('./pages/about')),
     icon: <AiOutlineUser />,
     isNav: true,
-    title: 'About'
+    title: '关于',
   },
   {
     path: '/403',
-    component: lazy(() => import('./pages/exception/403'))
-  }
+    component: lazy(() => import('./pages/exception/403')),
+  },
 ]
 
 export default routes

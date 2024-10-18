@@ -1,23 +1,30 @@
-import { Popconfirm, Table, message } from 'antd'
-import { Link } from 'react-router-dom'
-import { useRequest } from 'ahooks'
 import { deleteProject, getProjectList } from '@/services/project'
+import { useRequest } from 'ahooks'
+import { Popconfirm, Table, message } from 'antd'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-export default function Index () {
+export default function Index() {
   const [params, setParams] = useState({ page: 1, pageSize: 20 })
-  const { loading, data, refresh: refreshProjectList } = useRequest(() => getProjectList(params), {
-    refreshDeps: [params]
+  const {
+    loading,
+    data,
+    refresh: refreshProjectList,
+  } = useRequest(() => getProjectList(params), {
+    refreshDeps: [params],
   })
-  const { loading: deleteLoading, runAsync: runDeleteProject } = useRequest(deleteProject, {
-    manual: true
-  })
+  const { loading: deleteLoading, runAsync: runDeleteProject } = useRequest(
+    deleteProject,
+    {
+      manual: true,
+    },
+  )
 
   const handleDeleteProject = async (id: string) => {
     const res = await runDeleteProject({ id })
     if (res.data) {
       message.success('删除成功')
-      if (data?.data?.list && data.data.list.length > 1) {
+      if (data?.list && data.list.length > 1) {
         refreshProjectList()
       } else {
         handlePageChange(params.page - 1)
@@ -29,24 +36,29 @@ export default function Index () {
     {
       key: 'id',
       title: 'No.',
-      dataIndex: 'id'
+      dataIndex: 'id',
     },
     {
       key: 'name',
       title: 'name',
-      dataIndex: 'name'
+      dataIndex: 'name',
     },
     {
       key: 'action',
       title: 'name',
       dataIndex: 'id',
-      render: (t:string) => <div>
-        <Link to={'/project/' + t + '/info'}>View</Link>
-        <Popconfirm title='Confirm delete the project?' onConfirm={() => handleDeleteProject(t)}>
-          <a style={{ marginLeft: 10 }}>Delete</a>
-        </Popconfirm>
-      </div>
-    }
+      render: (t: string) => (
+        <div>
+          <Link to={'/project/' + t + '/info'}>View</Link>
+          <Popconfirm
+            title="Confirm delete the project?"
+            onConfirm={() => handleDeleteProject(t)}
+          >
+            <a style={{ marginLeft: 10 }}>Delete</a>
+          </Popconfirm>
+        </div>
+      ),
+    },
   ]
 
   const handlePageChange = (page: number) => {
@@ -57,15 +69,16 @@ export default function Index () {
     <div>
       <Table
         loading={loading || deleteLoading}
-        rowKey={r => r.id}
-        dataSource={data?.data?.list || []}
+        rowKey={(r) => r.id}
+        dataSource={data?.list || []}
         pagination={{
-          total: data?.data?.total,
+          total: data?.total,
           onChange: handlePageChange,
           showQuickJumper: true,
-          showSizeChanger: false
+          showSizeChanger: false,
         }}
-        columns={columns} />
+        columns={columns}
+      />
     </div>
   )
 }

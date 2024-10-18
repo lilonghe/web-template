@@ -1,7 +1,9 @@
 import { Spin } from 'antd'
 
-import styles from './index.module.less'
-
-export default function Loading () {
-  return <Spin className={styles.loading} />
+export default function Loading() {
+  return (
+    <div className="flex h-full items-center justify-center">
+      <Spin />
+    </div>
+  )
 }

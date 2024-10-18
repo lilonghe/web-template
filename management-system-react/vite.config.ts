@@ -5,18 +5,18 @@ import { viteMockServe } from 'vite-plugin-mock'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: 9090
+    port: 9090,
   },
   plugins: [
     react(),
     viteMockServe({
       mockPath: './mock',
-      watchFiles: true
-    })
+      watchFiles: true,
+    }),
   ],
   resolve: {
     alias: {
-      '@': '/src'
-    }
-  }
+      '@': '/src',
+    },
+  },
 })

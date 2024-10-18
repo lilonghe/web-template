@@ -2,7 +2,10 @@ import store from '@/store'
 
 import config from '../../config'
 
-export function checkPermission (authority: string | string[] | undefined, mode = config.PERMISSION_AUTH_MODE) {
+export function checkPermission(
+  authority: string | string[] | undefined,
+  mode = config.PERMISSION_AUTH_MODE,
+) {
   const { permissions } = store.getState().session
 
   if (authority) {
@@ -12,11 +15,11 @@ export function checkPermission (authority: string | string[] | undefined, mode 
       }
     } else if (Array.isArray(authority)) {
       if (mode === 'and') {
-        if (authority.every(item => permissions.includes(item))) {
+        if (authority.every((item) => permissions.includes(item))) {
           return true
         }
       } else {
-        if (authority.find(item => permissions.includes(item))) {
+        if (authority.find((item) => permissions.includes(item))) {
           return true
         }
       }

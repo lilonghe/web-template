@@ -3,15 +3,15 @@ import Mockjs from 'mockjs'
 export const userInfo = Mockjs.mock({
   id: '@uuid',
   name: '@name',
-  permissions: ['user-confirm']
+  permissions: ['user-confirm'],
 })
 
 export const projectList = Mockjs.mock({
   'list|10': [
     {
       id: '@uuid',
-      name: '@name'
-    }
+      name: '@name',
+    },
   ],
-  total: '@integer(10, 100)'
+  total: '@integer(10, 100)',
 })

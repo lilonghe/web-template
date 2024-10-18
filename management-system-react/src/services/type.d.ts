@@ -5,6 +5,6 @@ export interface IUserResponse {
 }
 
 export interface IGetProjectListResponse {
-  list: { id: string, name: string }[],
+  list: { id: string; name: string }[]
   total: number
 }

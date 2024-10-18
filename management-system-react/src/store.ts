@@ -7,7 +7,7 @@ type FullModel = ExtraModelsFromLoading<models.RootModel>
 
 const store = init<models.RootModel, FullModel>({
   models,
-  plugins: [loading()]
+  plugins: [loading()],
 })
 
 export default store

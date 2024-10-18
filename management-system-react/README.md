@@ -6,3 +6,15 @@
 npm i
 npm start
 ```
+
+# Data Fetch
+
+`/services`
+
+# Auth
+
+`/components/auth`
+
+# Route
+
+`/routes.tsx`

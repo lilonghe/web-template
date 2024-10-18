@@ -7,7 +7,7 @@ interface IAuthWrapper {
   authority: Authority
 }
 
-export default function AuthWrapper ({ children, authority }: IAuthWrapper) {
+export default function AuthWrapper({ children, authority }: IAuthWrapper) {
   if (checkPermission(authority)) {
     return <Fragment>{children}</Fragment>
   }

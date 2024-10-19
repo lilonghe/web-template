@@ -1,12 +1,10 @@
 import AuthWrapper from '@/components/auth/auth-wrapper'
-import { RootState } from '@/store'
+import { useSessionStore } from '@/stores/useSessionStore'
 import { Button, Card, Modal } from 'antd'
-import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 export default function Home() {
-  const dispatch = useDispatch()
-  const { user, permissions } = useSelector((state: RootState) => state.session)
+  const { user, permissions, savePermissions } = useSessionStore()
 
   return (
     <Card title="Home">
@@ -15,7 +13,7 @@ export default function Home() {
         <AuthWrapper authority="user-confirm">
           <Button
             onClick={() => {
-              dispatch.session.savePermissions([...permissions, 'private'])
+              savePermissions([...permissions, 'private'])
               Modal.success({
                 title: 'Now you can access [Private] page.',
               })

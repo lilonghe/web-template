@@ -1,21 +1,19 @@
 import Loading from '@/components/loading'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
 import BasicLayout from './components/layout/basic-layout'
 import Login from './pages/login'
 import routes from './routes'
-import { RootState } from './store'
 import { renderRoutes } from './utils'
+import { useSessionStore } from './stores/useSessionStore'
 
 export function App() {
-  const { user } = useSelector((state: RootState) => state.session)
-  const dispatch = useDispatch()
+  const { user, fetchUserInfo } = useSessionStore()
   const location = useLocation()
 
   useEffect(() => {
-    dispatch.session.fetchUserInfo()
+    fetchUserInfo()
   }, [])
 
   if (location.pathname === '/login') {

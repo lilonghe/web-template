@@ -1,12 +1,11 @@
-import store from '@/store'
-
 import config from '../../config'
+import { useSessionStore } from '@/stores/useSessionStore'
 
 export function checkPermission(
   authority: string | string[] | undefined,
   mode = config.PERMISSION_AUTH_MODE,
 ) {
-  const { permissions } = store.getState().session
+  const { permissions } = useSessionStore.getState()
 
   if (authority) {
     if (typeof authority === 'string') {

@@ -13,7 +13,7 @@ export type ISession = {
   saveUserInfo: (user: IUser) => void
   savePermissions: (permissions: string[]) => void
   clearState: () => void
-  fetchUserInfo: () => Promise<void>
+  fetchUserInfo: () => Promise<IUser | undefined>
 }
 
 const initState = {
@@ -21,7 +21,7 @@ const initState = {
   permissions: [],
 }
 
-export const useSessionStore = create<ISession>((set) => ({
+export const useSessionStore = create<ISession>((set, get) => ({
   ...initState,
   saveUserInfo: (user: IUser) => set({ user }),
   savePermissions: (permissions: string[]) => set({ permissions }),
@@ -29,8 +29,9 @@ export const useSessionStore = create<ISession>((set) => ({
   fetchUserInfo: async () => {
     const { data } = await getUser()
     if (data) {
-      useSessionStore.getState().saveUserInfo(data)
-      useSessionStore.getState().savePermissions(data.permissions)
+      get().saveUserInfo(data)
+      get().savePermissions(data.permissions)
     }
+    return data
   },
 }))

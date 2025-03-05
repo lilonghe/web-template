@@ -20,12 +20,13 @@ func main() {
 	// 创建 Gin 实例
 	r := gin.New()
 
-	// 使用日志和恢复中间件
-	r.Use(gin.Logger())
+	// 使用日志中间件和恢复中间件
+	r.Use(logger.LoggerMiddleware())
 	r.Use(gin.Recovery())
 
 	// 使用中间件
 	r.Use(middleware.CORS())
+	r.Use(middleware.ErrorHandler())
 
 	// 注册路由
 	routes.SetupRoutes(r)

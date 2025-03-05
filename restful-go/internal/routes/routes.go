@@ -1,7 +1,9 @@
 package routes
 
 import (
+	"net/http"
 	"restful-go/internal/middleware"
+	"restful-go/pkg/response"
 
 	"github.com/gin-gonic/gin"
 )
@@ -38,4 +40,9 @@ func SetupRoutes(r *gin.Engine) {
 			auth.DELETE("/:id", deleteConfig)    // 删除配置
 		}
 	}
+
+	// 添加 404 处理
+	r.NoRoute(func(c *gin.Context) {
+		response.ErrorWithCode(c, "接口不存在", http.StatusNotFound)
+	})
 }

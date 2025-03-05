@@ -54,3 +54,15 @@ func AuthRequired() gin.HandlerFunc {
 		c.Next()
 	}
 }
+
+func Authorize(permission string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// userID := c.GetUint("user_id")
+		// service.UserService.GetUserByID(userID)
+
+		// response.ErrorWithCode(c, "权限不足", http.StatusForbidden)
+		// c.Abort()
+
+		c.Next()
+	}
+}

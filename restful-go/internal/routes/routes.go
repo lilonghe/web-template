@@ -28,17 +28,13 @@ func SetupRoutes(r *gin.Engine) {
 
 	// 配置模块路由组
 	configGroup := r.Group("/api/configs")
+	configGroup.Use(middleware.AuthRequired())
 	{
-		// 需要认证的路由
-		auth := configGroup.Group("/")
-		auth.Use(middleware.AuthRequired())
-		{
-			auth.GET("", listConfigs)            // 获取配置列表
-			auth.GET("/:type", getConfigsByType) // 根据类型获取配置
-			auth.POST("", createConfig)          // 创建配置
-			auth.PUT("/:id", updateConfig)       // 更新配置
-			auth.DELETE("/:id", deleteConfig)    // 删除配置
-		}
+		configGroup.GET("", listConfigs)            // 获取配置列表
+		configGroup.GET("/:type", getConfigsByType) // 根据类型获取配置
+		configGroup.POST("", createConfig)          // 创建配置
+		configGroup.PUT("/:id", updateConfig)       // 更新配置
+		configGroup.DELETE("/:id", deleteConfig)    // 删除配置
 	}
 
 	// 添加 404 处理

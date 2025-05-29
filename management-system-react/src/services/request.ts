@@ -38,15 +38,15 @@ export async function requestWithStack<T>(
   }
 
   return fetch(url, options)
-    .then((res) => res.json())
-    .then((data) => {
+    .then(res => res.json())
+    .then(data => {
       if (data?.code) {
         return { err: data.code, errStack: data }
       } else {
         return { data }
       }
     })
-    .catch((err) => {
+    .catch(err => {
       return { err: err.message, errStack: err }
     })
 }
@@ -61,6 +61,6 @@ export async function request<T>(
   url: string,
   userOptions?: any,
 ): Promise<T | undefined> {
-  const res = await requestWithStack<T>(url, userOptions);
+  const res = await requestWithStack<T>(url, userOptions)
   return res.data
 }

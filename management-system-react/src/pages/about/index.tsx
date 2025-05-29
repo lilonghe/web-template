@@ -5,7 +5,7 @@ export default function About() {
       <p>This is the about page</p>
       {Array(100)
         .fill('test')
-        .map((item) => (
+        .map(item => (
           <p key={Math.random()}>{item}</p>
         ))}
     </div>

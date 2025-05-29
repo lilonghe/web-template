@@ -9,5 +9,8 @@ export async function getProjectList(params: any) {
 }
 
 export async function deleteProject(params: any) {
-  return requestWithStack(`${config.MOCK_API}/projects`, { method: 'delete', params })
+  return requestWithStack(`${config.MOCK_API}/projects`, {
+    method: 'delete',
+    params,
+  })
 }

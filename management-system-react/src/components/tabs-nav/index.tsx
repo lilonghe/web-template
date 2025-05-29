@@ -9,7 +9,7 @@ export default function TabsNav({ routes }: { routes: IMyRoute[] }) {
   return (
     <Tabs
       activeKey={lastPath}
-      items={routes.map((route) => ({
+      items={routes.map(route => ({
         key: route.path,
         label: <NavLink to={route.path}>{route.title}</NavLink>,
       }))}

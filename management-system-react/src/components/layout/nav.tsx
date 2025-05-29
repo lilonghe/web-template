@@ -29,7 +29,7 @@ export default function Nav() {
   let defaultActiveKey = location.pathname || '/'
 
   const getItems = (routeList: IMyRoute[], parent?: IMyRoute): MenuItem[] => {
-    return routeList.map((route) => {
+    return routeList.map(route => {
       const isMatchPath = matchPath(route.path, defaultActiveKey)
 
       if (isMatchPath) {
@@ -54,7 +54,7 @@ export default function Nav() {
   }
 
   const menuItems: MenuItem[] = getItems(
-    routes.filter((route) => route.isNav && checkPermission(route.authority)),
+    routes.filter(route => route.isNav && checkPermission(route.authority)),
   )
 
   // 未匹配到绝对路由时，截取 url 最前缀当作上级导航

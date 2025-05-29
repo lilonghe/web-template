@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const navigate = useNavigate()
-  const fetchUserInfo = useSessionStore((state) => state.fetchUserInfo)
+  const fetchUserInfo = useSessionStore(state => state.fetchUserInfo)
   const [loading, setLoading] = useState(false)
 
   const onSuccess = async () => {

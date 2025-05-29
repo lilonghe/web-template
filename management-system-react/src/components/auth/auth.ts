@@ -14,11 +14,11 @@ export function checkPermission(
       }
     } else if (Array.isArray(authority)) {
       if (mode === 'and') {
-        if (authority.every((item) => permissions.includes(item))) {
+        if (authority.every(item => permissions.includes(item))) {
           return true
         }
       } else {
-        if (authority.find((item) => permissions.includes(item))) {
+        if (authority.find(item => permissions.includes(item))) {
           return true
         }
       }

@@ -8,7 +8,7 @@ import { useSessionStore } from '@/stores/useSessionStore'
 
 export default function User() {
   const [, token] = useToken()
-  const { user, clearState } = useSessionStore((state) => state)
+  const { user, clearState } = useSessionStore(state => state)
   const { loading, runAsync } = useRequest(exitLogin, { manual: true })
 
   const navigate = useNavigate()

@@ -69,7 +69,7 @@ export default function Index() {
     <div>
       <Table
         loading={loading || deleteLoading}
-        rowKey={(r) => r.id}
+        rowKey={r => r.id}
         dataSource={data?.list || []}
         pagination={{
           total: data?.total,

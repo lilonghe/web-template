@@ -7,14 +7,15 @@ import tseslint from 'typescript-eslint'
 import eslintPluginPrettier from 'eslint-plugin-prettier/recommended'
 import unusedImports from 'eslint-plugin-unused-imports'
 
-export default tseslint.config(
+export default tseslint
+  .config(
     { ignores: ['dist'] },
     {
       extends: [
         js.configs.recommended,
         ...tseslint.configs.recommended,
         reactPlugin.configs.flat.recommended,
-        reactPlugin.configs.flat['jsx-runtime']
+        reactPlugin.configs.flat['jsx-runtime'],
       ],
       files: ['**/*.{ts,tsx}'],
       languageOptions: {
@@ -38,7 +39,8 @@ export default tseslint.config(
         ],
         'no-unused-vars': 'off',
         'unused-imports/no-unused-imports': 'error',
+        '@typescript-eslint/no-explicit-any': 'warn',
       },
     },
   )
-  .concat(eslintPluginPrettier);
+  .concat(eslintPluginPrettier)
